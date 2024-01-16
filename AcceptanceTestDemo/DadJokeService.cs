@@ -27,7 +27,10 @@ public interface IDadJokeRepository
 
 public class InMemoryDadJokeRepository : IDadJokeRepository
 {
-    private IEnumerable<DadJoke> _jokes = new List<DadJoke>();
+    private IEnumerable<DadJoke> _jokes = new List<DadJoke>()
+    {
+        new ("What do you call a fake noodle?", "An impasta"),
+    };
     
     public DadJoke GetRandomJoke()
     {

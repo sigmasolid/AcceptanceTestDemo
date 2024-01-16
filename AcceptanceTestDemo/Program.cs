@@ -12,7 +12,7 @@ builder.Services.AddSingleton<IDadJokeRepository, InMemoryDadJokeRepository>();
 var app = builder.Build();
 
 // Setup routes
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", (IDadJokeService jokeService) => jokeService.GetRandomJoke());
 
 // Start app
 app.Run();
