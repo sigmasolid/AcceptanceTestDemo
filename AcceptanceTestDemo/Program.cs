@@ -13,6 +13,7 @@ var app = builder.Build();
 
 // Setup routes
 app.MapGet("/", (IDadJokeService jokeService) => jokeService.GetRandomJoke());
+app.MapPost("/", (IDadJokeService jokeService, DadJoke joke) => jokeService.CreateJoke(joke));
 
 // Start app
 app.Run();

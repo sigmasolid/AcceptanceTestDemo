@@ -13,16 +13,23 @@ public class DadJokeService : IDadJokeService
     {
         return _dadJokeRepository.GetRandomJoke();
     }
+
+    public DadJoke CreateJoke(DadJoke joke)
+    {
+        return _dadJokeRepository.CreateJoke(joke);
+    }
 }
 
 public interface IDadJokeService
 {
     DadJoke GetRandomJoke();
+    DadJoke CreateJoke(DadJoke joke);
 }
 
 public interface IDadJokeRepository
 {
     DadJoke GetRandomJoke();
+    DadJoke CreateJoke(DadJoke joke);
 }
 
 public class InMemoryDadJokeRepository : IDadJokeRepository
@@ -35,5 +42,11 @@ public class InMemoryDadJokeRepository : IDadJokeRepository
     public DadJoke GetRandomJoke()
     {
         return _jokes.ElementAt(new Random().Next(0, _jokes.Count()));
+    }
+
+    public DadJoke CreateJoke(DadJoke joke)
+    {
+        _jokes = _jokes.Append(joke);
+        return joke;
     }
 }
