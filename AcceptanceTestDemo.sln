@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTestDemo", "AcceptanceTestDemo\AcceptanceTestDemo.csproj", "{555065FC-1BBB-4C55-A82C-5FC909C51724}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTestDemo.AcceptanceTests", "AcceptanceTestDemo.AcceptanceTests\AcceptanceTestDemo.AcceptanceTests.csproj", "{63AE2140-9D50-4090-96C2-AF8A3297A3A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{555065FC-1BBB-4C55-A82C-5FC909C51724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555065FC-1BBB-4C55-A82C-5FC909C51724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555065FC-1BBB-4C55-A82C-5FC909C51724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555065FC-1BBB-4C55-A82C-5FC909C51724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63AE2140-9D50-4090-96C2-AF8A3297A3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63AE2140-9D50-4090-96C2-AF8A3297A3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63AE2140-9D50-4090-96C2-AF8A3297A3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63AE2140-9D50-4090-96C2-AF8A3297A3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
