@@ -12,6 +12,6 @@ POST http://localhost:5000/
 Content-Type: application/json
 
 {
-  "Joke": "John Doe",
-  "Punchline": "Per"
+  "Joke": "I got fired from the transmission factory today.",
+  "Punchline": "Apparently, I was not putting in enough shifts."
 }
