@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTestDemo.Acceptan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTestDemo.Domain", "AcceptanceTestDemo.Domain\AcceptanceTestDemo.Domain.csproj", "{810D62D5-0C89-411B-B081-EB7F16B0A4FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTestDemo.WebApi", "AcceptanceTestDemo.WebApi\AcceptanceTestDemo.WebApi.csproj", "{5CD82D5E-B8C7-45DA-9AE5-85013FFF40BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{810D62D5-0C89-411B-B081-EB7F16B0A4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{810D62D5-0C89-411B-B081-EB7F16B0A4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{810D62D5-0C89-411B-B081-EB7F16B0A4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD82D5E-B8C7-45DA-9AE5-85013FFF40BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD82D5E-B8C7-45DA-9AE5-85013FFF40BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD82D5E-B8C7-45DA-9AE5-85013FFF40BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD82D5E-B8C7-45DA-9AE5-85013FFF40BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

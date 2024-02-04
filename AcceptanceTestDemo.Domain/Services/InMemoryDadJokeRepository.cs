@@ -8,12 +8,14 @@ public class InMemoryDadJokeRepository : IDadJokeRepository
     
     public DadJoke GetRandomJoke()
     {
+        if (!_jokes.Any())
+            return null!;
         return _jokes.ElementAt(new Random().Next(0, _jokes.Count()));
     }
 
     public DadJoke GetJoke(int id)
     {
-        return _jokes.Single(x => x.Id == id);
+        return _jokes.SingleOrDefault(x => x.Id == id)!;
     }
 
     public DadJoke CreateJoke(CreateDadJokeRequest joke)
