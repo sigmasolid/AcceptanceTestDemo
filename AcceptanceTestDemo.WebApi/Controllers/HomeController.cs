@@ -8,30 +8,30 @@ namespace AcceptanceTestDemo.WebApi.Controllers;
 public class HomeController(IDadJokeService dadJokeService) : ControllerBase
 {
     [HttpGet("/")]
-    public IResult GetRandomJoke()
+    public ActionResult<DadJoke> GetRandomJoke()
     {
         var joke = dadJokeService.GetRandomJoke();
-        return joke is not null ? Results.Ok(joke) : Results.NotFound();
+        return joke is not null ? joke : NotFound();
     }
     
     [HttpGet("/{id}")]
-    public IResult GetRandomJoke(int jokeId)
+    public ActionResult<DadJoke> GetRandomJoke(int jokeId)
     {
         try
         {
             var joke = dadJokeService.GetJoke(jokeId);
-            return Results.Ok(joke);
+            return joke is not null ? joke : NotFound();
         }
         catch (InvalidOperationException)
         {
-            return Results.NotFound();
+            return NotFound();
         }
     }
     
     [HttpPost("/")]
-    public IResult CreateJoke(CreateDadJokeRequest joke)
+    public ActionResult<DadJoke> CreateJoke(CreateDadJokeRequest joke)
     {
         var createdJoke = dadJokeService.CreateJoke(joke);
-        return Results.Created($"/{createdJoke.Id}", createdJoke);
+        return Created($"/{createdJoke.Id}", createdJoke);
     }
 }

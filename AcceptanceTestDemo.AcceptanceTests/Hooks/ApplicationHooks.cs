@@ -1,4 +1,6 @@
-﻿using BoDi;
+﻿using AcceptanceTestDemo.Domain.Services;
+using AcceptanceTestDemo.WebApi.Controllers;
+using BoDi;
 using TechTalk.SpecFlow;
 
 namespace AcceptanceTestDemo.AcceptanceTests.Hooks;
@@ -22,5 +24,8 @@ public class ApplicationHooks(ObjectContainer objectContainer)
         };
         // ObjectContainer is a dependency injection container provided by SpecFlow
         objectContainer.RegisterInstanceAs(httpClient);
+        var dadJokeService = new DadJokeService(new InMemoryDadJokeRepository());
+        var homeController = new HomeController(dadJokeService);
+        objectContainer.RegisterInstanceAs(homeController);
     }
 }
