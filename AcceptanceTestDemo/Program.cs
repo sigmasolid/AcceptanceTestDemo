@@ -1,6 +1,8 @@
 ﻿// Create builder for minimal API
 
-using AcceptanceTestDemo;
+using AcceptanceTestDemo.Domain;
+using AcceptanceTestDemo.Domain.Interfaces;
+using AcceptanceTestDemo.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +22,8 @@ app.MapPost("/", (IDadJokeService jokeService, CreateDadJokeRequest joke) => jok
 app.Run();
 
 // Needed for minimal API to be picked up in the acceptance test project
-public partial class Program { }
+namespace AcceptanceTestDemo
+{
+    public partial class Program { }
+}
 
-public record DadJoke(int Id, string Opening, string Punchline);
-
-public record CreateDadJokeRequest(string Opening, string Punchline);

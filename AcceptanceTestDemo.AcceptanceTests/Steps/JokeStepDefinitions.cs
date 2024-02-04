@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using AcceptanceTestDemo.AcceptanceTests.Constants;
+using AcceptanceTestDemo.Domain;
 using Shouldly;
 using TechTalk.SpecFlow;
 
