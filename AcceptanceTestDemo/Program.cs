@@ -19,6 +19,6 @@ app.MapPost("/", (IDadJokeService jokeService, CreateDadJokeRequest joke) => jok
 // Start app
 app.Run();
 
-public record DadJoke(int Id, string Joke, string Punchline);
+public record DadJoke(int Id, string Opening, string Punchline);
 
-public record CreateDadJokeRequest(string Joke, string Punchline);
+public record CreateDadJokeRequest(string Opening, string Punchline);

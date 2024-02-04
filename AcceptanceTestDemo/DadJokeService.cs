@@ -1,30 +1,24 @@
 ﻿namespace AcceptanceTestDemo;
 
-public class DadJokeService : IDadJokeService
+public class DadJokeService(IDadJokeRepository dadJokeRepository) : IDadJokeService
 {
-    private readonly IDadJokeRepository _dadJokeRepository;
-
-    public DadJokeService(IDadJokeRepository dadJokeRepository)
-    {
-        _dadJokeRepository = dadJokeRepository;
-    }
-
     public DadJoke GetRandomJoke()
     {
-        return _dadJokeRepository.GetRandomJoke();
+        return dadJokeRepository.GetRandomJoke();
     }
 
     public DadJoke GetJoke(int id)
     {
-        return _dadJokeRepository.GetJoke(id);
+        return dadJokeRepository.GetJoke(id);
     }
 
     public DadJoke CreateJoke(CreateDadJokeRequest joke)
     {
-        return _dadJokeRepository.CreateJoke(joke);
+        return dadJokeRepository.CreateJoke(joke);
     }
 }
 
+# region Interfaces
 public interface IDadJokeService
 {
     DadJoke GetRandomJoke();
@@ -38,6 +32,7 @@ public interface IDadJokeRepository
     DadJoke CreateJoke(CreateDadJokeRequest joke);
     DadJoke GetJoke(int id);
 }
+# endregion
 
 public class InMemoryDadJokeRepository : IDadJokeRepository
 {
@@ -58,7 +53,7 @@ public class InMemoryDadJokeRepository : IDadJokeRepository
 
     public DadJoke CreateJoke(CreateDadJokeRequest joke)
     {
-        var newJoke = new DadJoke(_jokes.Count() + 1, joke.Joke, joke.Punchline);
+        var newJoke = new DadJoke(_jokes.Count() + 1, joke.Opening, joke.Punchline);
         _jokes = _jokes.Append(newJoke);
         return newJoke;
     }
