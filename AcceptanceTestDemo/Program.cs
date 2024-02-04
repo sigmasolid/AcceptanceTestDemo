@@ -19,6 +19,9 @@ app.MapPost("/", (IDadJokeService jokeService, CreateDadJokeRequest joke) => jok
 // Start app
 app.Run();
 
+// Needed for minimal API to be picked up in the acceptance test project
+public partial class Program { }
+
 public record DadJoke(int Id, string Opening, string Punchline);
 
 public record CreateDadJokeRequest(string Opening, string Punchline);
