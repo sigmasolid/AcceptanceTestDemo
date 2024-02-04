@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace AcceptanceTestDemo.AcceptanceTests.Features
+namespace DadJoke.WebApi.AcceptanceTests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace AcceptanceTestDemo.AcceptanceTests.Features
 #line 1 "JokeTests.feature"
 #line hidden
         
-        public JokeTestsFeature(JokeTestsFeature.FixtureData fixtureData, AcceptanceTestDemo_AcceptanceTests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public JokeTestsFeature(JokeTestsFeature.FixtureData fixtureData, DadJoke_WebApi_AcceptanceTests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();

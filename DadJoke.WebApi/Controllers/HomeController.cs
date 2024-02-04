@@ -1,21 +1,21 @@
-using AcceptanceTestDemo.Domain;
-using AcceptanceTestDemo.Domain.Interfaces;
+using DadJoke.Domain;
+using DadJoke.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AcceptanceTestDemo.WebApi.Controllers;
+namespace DadJoke.WebApi.Controllers;
 
 [ApiController]
 public class HomeController(IDadJokeService dadJokeService) : ControllerBase
 {
     [HttpGet("/")]
-    public ActionResult<DadJoke> GetRandomJoke()
+    public ActionResult<Domain.DadJoke> GetRandomJoke()
     {
         var joke = dadJokeService.GetRandomJoke();
         return joke is not null ? joke : NotFound();
     }
     
     [HttpGet("/{id}")]
-    public ActionResult<DadJoke> GetRandomJoke(int jokeId)
+    public ActionResult<Domain.DadJoke> GetRandomJoke(int jokeId)
     {
         try
         {
@@ -29,7 +29,7 @@ public class HomeController(IDadJokeService dadJokeService) : ControllerBase
     }
     
     [HttpPost("/")]
-    public ActionResult<DadJoke> CreateJoke(CreateDadJokeRequest joke)
+    public ActionResult<Domain.DadJoke> CreateJoke(CreateDadJokeRequest joke)
     {
         var createdJoke = dadJokeService.CreateJoke(joke);
         return Created($"/{createdJoke.Id}", createdJoke);

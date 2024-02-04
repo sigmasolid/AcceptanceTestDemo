@@ -1,9 +1,9 @@
-﻿using AcceptanceTestDemo.Domain.Services;
-using AcceptanceTestDemo.WebApi.Controllers;
+﻿using DadJoke.WebApi.Controllers;
 using BoDi;
+using DadJoke.Domain.Services;
 using TechTalk.SpecFlow;
 
-namespace AcceptanceTestDemo.AcceptanceTests.Hooks;
+namespace DadJoke.WebApi.AcceptanceTests.Hooks;
 
 [Binding]
 public class ApplicationHooks(ObjectContainer objectContainer)

@@ -1,4 +1,4 @@
-namespace AcceptanceTestDemo.Domain.Interfaces;
+namespace DadJoke.Domain.Interfaces;
 
 public interface IDadJokeRepository
 {

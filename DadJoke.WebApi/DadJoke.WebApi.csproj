@@ -84,7 +84,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AcceptanceTestDemo.Domain\AcceptanceTestDemo.Domain.csproj" />
+      <ProjectReference Include="..\DadJoke.Domain\DadJoke.Domain.csproj" />
     </ItemGroup>
 
 </Project>

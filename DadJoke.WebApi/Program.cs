@@ -1,5 +1,5 @@
-using AcceptanceTestDemo.Domain.Interfaces;
-using AcceptanceTestDemo.Domain.Services;
+using DadJoke.Domain.Interfaces;
+using DadJoke.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

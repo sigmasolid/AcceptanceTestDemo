@@ -16,8 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AcceptanceTestDemo.WebApi\AcceptanceTestDemo.WebApi.csproj" />
-      <ProjectReference Include="..\AcceptanceTestDemo\AcceptanceTestDemo.csproj" />
+      <ProjectReference Include="..\DadJoke.WebApi\DadJoke.WebApi.csproj" />
     </ItemGroup>
 
 </Project>

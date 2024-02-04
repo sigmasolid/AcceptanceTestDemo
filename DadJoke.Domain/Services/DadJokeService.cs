@@ -1,6 +1,6 @@
-﻿using AcceptanceTestDemo.Domain.Interfaces;
+﻿using DadJoke.Domain.Interfaces;
 
-namespace AcceptanceTestDemo.Domain.Services;
+namespace DadJoke.Domain.Services;
 
 public class DadJokeService(IDadJokeRepository dadJokeRepository) : IDadJokeService
 {

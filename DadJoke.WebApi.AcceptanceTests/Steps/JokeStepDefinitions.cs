@@ -1,9 +1,9 @@
-﻿using AcceptanceTestDemo.Domain;
-using AcceptanceTestDemo.WebApi.Controllers;
+﻿using DadJoke.Domain;
+using DadJoke.WebApi.Controllers;
 using Shouldly;
 using TechTalk.SpecFlow;
 
-namespace AcceptanceTestDemo.AcceptanceTests.Steps;
+namespace DadJoke.WebApi.AcceptanceTests.Steps;
 
 /// <summary>
 ///    This class contains the step definitions for the dad joke API.
@@ -34,7 +34,7 @@ public sealed class JokeStepDefinitions(ScenarioContext scenarioContext,
     [Then(@"a joke should be returned")]
     public void ThenAJokeShouldBeReturned()
     {
-        var joke = scenarioContext.Get<DadJoke>("Joke");
+        var joke = scenarioContext.Get<DadJoke.Domain.DadJoke>("Joke");
         joke.ShouldNotBeNull();
     }
 }
