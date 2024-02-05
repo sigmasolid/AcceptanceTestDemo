@@ -19,10 +19,15 @@ public class ApplicationHooks(ObjectContainer objectContainer)
     public static void DockerComposeUp()
     {
         var dockerComposePath = GetDockerComposeLocation();
+
+        var confirmationUrl = BaseAddress;
         _compositeService = new Builder()
             .UseContainer()
             .UseCompose()
             .FromFile(dockerComposePath)
+            .RemoveOrphans()
+            .WaitForHttp("dadjoke.webapi", $"{confirmationUrl}/health",
+                continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
             .Build().Start();
     }
 
