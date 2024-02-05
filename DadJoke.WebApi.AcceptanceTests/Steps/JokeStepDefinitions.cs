@@ -1,4 +1,5 @@
-﻿using DadJoke.Domain;
+﻿using System.Net.Http.Json;
+using DadJoke.Domain;
 using DadJoke.WebApi.Controllers;
 using Shouldly;
 using TechTalk.SpecFlow;
@@ -13,7 +14,8 @@ namespace DadJoke.WebApi.AcceptanceTests.Steps;
 /// </param>
 [Binding]
 public sealed class JokeStepDefinitions(ScenarioContext scenarioContext,
-    HomeController controller)
+    HomeController controller,
+    HttpClient httpClient)
 {
     [Given(@"a joke already exists")]
     public void GivenAJokeAlreadyExists()
@@ -21,14 +23,16 @@ public sealed class JokeStepDefinitions(ScenarioContext scenarioContext,
         var joke = new CreateDadJokeRequest(
             "Why did the scarecrow win an award?",
             "Because he was outstanding in his field.");
-        controller.CreateJoke(joke);
+        httpClient.PostAsJsonAsync("/", joke);
+        //controller.CreateJoke(joke);
     }
 
     [When(@"the endpoint for a random joke is called")]
-    public void WhenTheEndpointForARandomJokeIsCalled()
+    public async Task WhenTheEndpointForARandomJokeIsCalled()
     {
-        var result = controller.GetRandomJoke();
-        scenarioContext.Add("Joke", result.Value);
+        var result = await httpClient.GetFromJsonAsync<Domain.DadJoke>("/");
+        //var result = controller.GetRandomJoke();
+        scenarioContext.Add("Joke", result);
     }
 
     [Then(@"a joke should be returned")]
