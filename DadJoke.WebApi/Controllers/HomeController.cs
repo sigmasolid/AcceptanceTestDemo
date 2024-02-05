@@ -34,4 +34,10 @@ public class HomeController(IDadJokeService dadJokeService) : ControllerBase
         var createdJoke = dadJokeService.CreateJoke(joke);
         return Created($"/{createdJoke.Id}", createdJoke);
     }
+    
+    [HttpGet("/health")]
+    public ActionResult HealthCheck()
+    {
+        return Ok();
+    }
 }
