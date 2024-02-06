@@ -8,14 +8,14 @@ namespace DadJoke.WebApi.Controllers;
 public class HomeController(IDadJokeService dadJokeService) : ControllerBase
 {
     [HttpGet("/")]
-    public ActionResult<Domain.DadJoke> GetRandomJoke()
+    public ActionResult<Joke> GetRandomJoke()
     {
         var joke = dadJokeService.GetRandomJoke();
         return joke is not null ? joke : NotFound();
     }
     
     [HttpGet("/{id}")]
-    public ActionResult<Domain.DadJoke> GetRandomJoke(int jokeId)
+    public ActionResult<Joke> GetRandomJoke(int jokeId)
     {
         try
         {
@@ -29,7 +29,7 @@ public class HomeController(IDadJokeService dadJokeService) : ControllerBase
     }
     
     [HttpPost("/")]
-    public ActionResult<Domain.DadJoke> CreateJoke(CreateDadJokeRequest joke)
+    public ActionResult<Joke> CreateJoke(CreateDadJokeRequest joke)
     {
         var createdJoke = dadJokeService.CreateJoke(joke);
         return Created($"/{createdJoke.Id}", createdJoke);

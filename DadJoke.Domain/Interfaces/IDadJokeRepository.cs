@@ -2,7 +2,7 @@ namespace DadJoke.Domain.Interfaces;
 
 public interface IDadJokeRepository
 {
-    DadJoke GetRandomJoke();
-    DadJoke CreateJoke(CreateDadJokeRequest joke);
-    DadJoke GetJoke(int id);
+    Joke GetRandomJoke();
+    Joke CreateJoke(CreateDadJokeRequest joke);
+    Joke GetJoke(int id);
 }

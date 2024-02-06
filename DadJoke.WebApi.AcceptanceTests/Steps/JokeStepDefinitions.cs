@@ -1,6 +1,5 @@
 ﻿using System.Net.Http.Json;
 using DadJoke.Domain;
-using DadJoke.WebApi.Controllers;
 using Shouldly;
 using TechTalk.SpecFlow;
 
@@ -13,32 +12,30 @@ namespace DadJoke.WebApi.AcceptanceTests.Steps;
 ///     ScenarioContext is a dictionary that can be used to share data between steps in a scenario
 /// </param>
 [Binding]
-public sealed class JokeStepDefinitions(ScenarioContext scenarioContext,
-    HomeController controller,
+public sealed class JokeStepDefinitions(
+    ScenarioContext scenarioContext,
     HttpClient httpClient)
 {
     [Given(@"a joke already exists")]
-    public void GivenAJokeAlreadyExists()
+    public async Task GivenAJokeAlreadyExists()
     {
         var joke = new CreateDadJokeRequest(
             "Why did the scarecrow win an award?",
             "Because he was outstanding in his field.");
-        httpClient.PostAsJsonAsync("/", joke);
-        //controller.CreateJoke(joke);
+        await httpClient.PostAsJsonAsync("/", joke);
     }
 
     [When(@"the endpoint for a random joke is called")]
     public async Task WhenTheEndpointForARandomJokeIsCalled()
     {
-        var result = await httpClient.GetFromJsonAsync<Domain.DadJoke>("/");
-        //var result = controller.GetRandomJoke();
+        var result = await httpClient.GetFromJsonAsync<Joke>("/");
         scenarioContext.Add("Joke", result);
     }
 
     [Then(@"a joke should be returned")]
     public void ThenAJokeShouldBeReturned()
     {
-        var joke = scenarioContext.Get<DadJoke.Domain.DadJoke>("Joke");
+        var joke = scenarioContext.Get<Joke>("Joke");
         joke.ShouldNotBeNull();
     }
 }

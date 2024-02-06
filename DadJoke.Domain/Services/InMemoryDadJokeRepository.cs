@@ -4,23 +4,23 @@ namespace DadJoke.Domain.Services;
 
 public class InMemoryDadJokeRepository : IDadJokeRepository
 {
-    private IEnumerable<DadJoke> _jokes = new List<DadJoke>();
+    private IEnumerable<Joke> _jokes = new List<Joke>();
     
-    public DadJoke GetRandomJoke()
+    public Joke GetRandomJoke()
     {
         if (!_jokes.Any())
             return null!;
         return _jokes.ElementAt(new Random().Next(0, _jokes.Count()));
     }
 
-    public DadJoke GetJoke(int id)
+    public Joke GetJoke(int id)
     {
         return _jokes.SingleOrDefault(x => x.Id == id)!;
     }
 
-    public DadJoke CreateJoke(CreateDadJokeRequest joke)
+    public Joke CreateJoke(CreateDadJokeRequest joke)
     {
-        var newJoke = new DadJoke(_jokes.Count() + 1, joke.Opening, joke.Punchline);
+        var newJoke = new Joke(_jokes.Count() + 1, joke.Opening, joke.Punchline);
         _jokes = _jokes.Append(newJoke);
         return newJoke;
     }

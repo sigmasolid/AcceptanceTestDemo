@@ -13,7 +13,7 @@ public class ApplicationHooks(ObjectContainer objectContainer)
 {
     private static ICompositeService _compositeService = null!;
     private const string DockerComposeFileName = "docker-compose.yml";
-    private const string BaseAddress = "http://localhost:8080";
+    private const string BaseAddress = "http://localhost:5555";
     
     [BeforeTestRun]
     public static void DockerComposeUp()
@@ -40,9 +40,9 @@ public class ApplicationHooks(ObjectContainer objectContainer)
         };
         // ObjectContainer is a dependency injection container provided by SpecFlow
         objectContainer.RegisterInstanceAs(httpClient);
-        var dadJokeService = new DadJokeService(new InMemoryDadJokeRepository());
-        var homeController = new HomeController(dadJokeService);
-        objectContainer.RegisterInstanceAs(homeController);
+        // var dadJokeService = new DadJokeService(new InMemoryDadJokeRepository());
+        // var homeController = new HomeController(dadJokeService);
+        // objectContainer.RegisterInstanceAs(homeController);
     }
 
     [AfterTestRun]

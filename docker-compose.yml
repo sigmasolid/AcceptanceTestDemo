@@ -4,4 +4,4 @@
     build:
       dockerfile: DadJoke.WebApi/Dockerfile
     ports:
-        - "8080:80"
+        - "5555:8080"
