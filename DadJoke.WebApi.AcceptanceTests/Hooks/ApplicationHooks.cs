@@ -4,6 +4,7 @@ using BoDi;
 using DadJoke.Domain.Services;
 using Ductus.FluentDocker.Builders;
 using Ductus.FluentDocker.Services;
+using Microsoft.Extensions.Configuration;
 using TechTalk.SpecFlow;
 
 namespace DadJoke.WebApi.AcceptanceTests.Hooks;
@@ -16,19 +17,9 @@ public class ApplicationHooks(ObjectContainer objectContainer)
     private const string BaseAddress = "http://localhost:5555";
     
     [BeforeTestRun]
-    public static void DockerComposeUp()
+    public static void BeforeTestRun()
     {
-        var dockerComposePath = GetDockerComposeLocation();
-
-        var confirmationUrl = BaseAddress;
-        _compositeService = new Builder()
-            .UseContainer()
-            .UseCompose()
-            .FromFile(dockerComposePath)
-            .RemoveOrphans()
-            .WaitForHttp("dadjoke.webapi", $"{confirmationUrl}/health",
-                continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
-            .Build().Start();
+        // Do stuff before the test run (ie. before any scenarios are run)
     }
 
     [BeforeScenario]
@@ -40,26 +31,12 @@ public class ApplicationHooks(ObjectContainer objectContainer)
         };
         // ObjectContainer is a dependency injection container provided by SpecFlow
         objectContainer.RegisterInstanceAs(httpClient);
-        // var dadJokeService = new DadJokeService(new InMemoryDadJokeRepository());
-        // var homeController = new HomeController(dadJokeService);
-        // objectContainer.RegisterInstanceAs(homeController);
+        objectContainer.RegisterInstanceAs(new WebApplicationToTest());
     }
 
     [AfterTestRun]
-    public static void DockerComposeDown()
+    public static void AfterTestRun()
     {
-        _compositeService.Stop();
-        _compositeService.Dispose();
-    }
-
-    private static string GetDockerComposeLocation()
-    {
-        var directory = Directory.GetCurrentDirectory();
-        while (!Directory.EnumerateFiles(directory, "*.yml").Any(s => s.EndsWith(DockerComposeFileName)))
-        {
-            directory = directory.Substring(0, directory.LastIndexOf(Path.DirectorySeparatorChar));
-        }
-
-        return Path.Combine(directory, DockerComposeFileName);
+        // Clean up after the test run (ie. after all scenarios are run)
     }
 }
