@@ -32,4 +32,5 @@ app.MapControllerRoute(
 
 app.Run();
 
+// Small tweak needed for the WebApplicationFactory because the Program class is internal
 public partial class Program { }
