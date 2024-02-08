@@ -15,6 +15,7 @@ public class ApplicationHooks(ObjectContainer objectContainer)
     [BeforeScenario]
     public void BeforeScenario()
     {
+        // Do stuff before each scenario is run
         var webApplicationToTest = new WebApplicationToTest();
         var httpClient = webApplicationToTest.CreateClient();
         // ObjectContainer is a dependency injection container provided by SpecFlow
@@ -24,6 +25,6 @@ public class ApplicationHooks(ObjectContainer objectContainer)
     [AfterTestRun]
     public static void AfterTestRun()
     {
-        // Clean up after the test run (ie. after all scenarios are run)
+        // Clean up after the test run (ie. after _all_ scenarios are completed)
     }
 }
