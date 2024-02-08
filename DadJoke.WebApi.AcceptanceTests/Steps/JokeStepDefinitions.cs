@@ -22,7 +22,20 @@ public sealed class JokeStepDefinitions(
         var joke = new CreateDadJokeRequest(
             "Why did the scarecrow win an award?",
             "Because he was outstanding in his field.");
-        await client.PostAsJsonAsync("/", joke);
+        var createdJoke = await CreateJokeAsync(joke);
+        scenarioContext.Add("CreatedJoke", createdJoke);
+    }
+
+    private async Task<Joke?> CreateJokeAsync(CreateDadJokeRequest joke)
+    {
+        var httpResponseMessage = await SendCreateJokeRequest(joke);
+        var createdJoke = await httpResponseMessage.Content.ReadFromJsonAsync<Joke>();
+        return createdJoke;
+    }
+
+    private async Task<HttpResponseMessage> SendCreateJokeRequest(CreateDadJokeRequest joke)
+    {
+        return await client.PostAsJsonAsync("/", joke);
     }
 
     [When(@"the endpoint for a random joke is called")]
