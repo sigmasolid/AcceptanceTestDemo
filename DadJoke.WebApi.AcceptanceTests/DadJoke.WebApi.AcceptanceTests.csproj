@@ -7,16 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-          <PackageReference Include="Ductus.FluentDocker.XUnit" Version="2.10.59" />
-          <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.1" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-      <PackageReference Include="Shouldly" Version="4.2.1" />
-      <PackageReference Include="SpecFlow.xUnit" Version="3.9.74" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
+        <PackageReference Include="Shouldly" Version="4.2.1"/>
+        <PackageReference Include="SpecFlow.xUnit" Version="3.9.74"/>
+        <PackageReference Include="Ductus.FluentDocker.XUnit" Version="2.10.59"/>i
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DadJoke.WebApi\DadJoke.WebApi.csproj" />
+        <ProjectReference Include="..\DadJoke.WebApi\DadJoke.WebApi.csproj"/>
     </ItemGroup>
 
 </Project>
