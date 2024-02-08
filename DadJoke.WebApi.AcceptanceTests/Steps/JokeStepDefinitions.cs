@@ -1,6 +1,5 @@
 ﻿using System.Net.Http.Json;
 using DadJoke.Domain;
-using DadJoke.WebApi.AcceptanceTests.Hooks;
 using Shouldly;
 using TechTalk.SpecFlow;
 
@@ -14,14 +13,12 @@ namespace DadJoke.WebApi.AcceptanceTests.Steps;
 /// </param>
 [Binding]
 public sealed class JokeStepDefinitions(
-    WebApplicationToTest sut,
     ScenarioContext scenarioContext,
-    HttpClient httpClient)
+    HttpClient client)
 {
     [Given(@"a joke already exists")]
     public async Task GivenAJokeAlreadyExists()
     {
-        var client = sut.CreateClient();
         var joke = new CreateDadJokeRequest(
             "Why did the scarecrow win an award?",
             "Because he was outstanding in his field.");
@@ -31,7 +28,6 @@ public sealed class JokeStepDefinitions(
     [When(@"the endpoint for a random joke is called")]
     public async Task WhenTheEndpointForARandomJokeIsCalled()
     {
-        var client = sut.CreateClient();
         var result = await client.GetFromJsonAsync<Joke>("/");
         scenarioContext.Add("Joke", result);
     }

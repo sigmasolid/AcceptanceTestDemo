@@ -1,10 +1,4 @@
-﻿using System.Net;
-using DadJoke.WebApi.Controllers;
-using BoDi;
-using DadJoke.Domain.Services;
-using Ductus.FluentDocker.Builders;
-using Ductus.FluentDocker.Services;
-using Microsoft.Extensions.Configuration;
+﻿using BoDi;
 using TechTalk.SpecFlow;
 
 namespace DadJoke.WebApi.AcceptanceTests.Hooks;
@@ -12,10 +6,6 @@ namespace DadJoke.WebApi.AcceptanceTests.Hooks;
 [Binding]
 public class ApplicationHooks(ObjectContainer objectContainer)
 {
-    private static ICompositeService _compositeService = null!;
-    private const string DockerComposeFileName = "docker-compose.yml";
-    private const string BaseAddress = "http://localhost:5555";
-    
     [BeforeTestRun]
     public static void BeforeTestRun()
     {
@@ -25,13 +15,10 @@ public class ApplicationHooks(ObjectContainer objectContainer)
     [BeforeScenario]
     public void BeforeScenario()
     {
-        var httpClient = new HttpClient()
-        {
-            BaseAddress = new Uri(BaseAddress)
-        };
+        var webApplicationToTest = new WebApplicationToTest();
+        var httpClient = webApplicationToTest.CreateClient();
         // ObjectContainer is a dependency injection container provided by SpecFlow
         objectContainer.RegisterInstanceAs(httpClient);
-        objectContainer.RegisterInstanceAs(new WebApplicationToTest());
     }
 
     [AfterTestRun]
