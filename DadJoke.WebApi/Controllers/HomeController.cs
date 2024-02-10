@@ -14,7 +14,7 @@ public class HomeController(IDadJokeService dadJokeService) : ControllerBase
         return joke is not null ? joke : NotFound();
     }
     
-    [HttpGet("/{id}")]
+    [HttpGet("/{jokeId}")]
     public ActionResult<Joke> GetRandomJoke(int jokeId)
     {
         try
@@ -33,11 +33,5 @@ public class HomeController(IDadJokeService dadJokeService) : ControllerBase
     {
         var createdJoke = dadJokeService.CreateJoke(joke);
         return Created($"/{createdJoke.Id}", createdJoke);
-    }
-    
-    [HttpGet("/health")]
-    public ActionResult HealthCheck()
-    {
-        return Ok();
     }
 }
