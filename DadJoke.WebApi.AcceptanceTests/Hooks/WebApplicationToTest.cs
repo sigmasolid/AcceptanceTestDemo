@@ -8,11 +8,12 @@ public class WebApplicationToTest : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        //Environment.SetEnvironmentVariable("CacheSettings:UseCache", "false");
-
+        var acceptanceTestConnectionString =
+            "Server=Provider=PostgreSQL OLE DB Provider;Data Source=localhost,5432;location=myDataBase;User ID=myUsername;password=mysecretpassword;timeout=1000;";
         _ = builder.ConfigureTestServices(services =>
         {
             //services.AddTransient<Interface, ImplementationFake>();
+            builder.UseSetting("ConnectionStrings:MyConnectionString", acceptanceTestConnectionString);
         });
     }
 }
